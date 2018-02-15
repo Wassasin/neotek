@@ -1,8 +1,8 @@
 (export (version D)
   (design
     (source /home/wouter/personal/neotek/neotek.sch)
-    (date "ma 29 jan 2018 23:23:30 CET")
-    (tool "Eeschema 4.0.4+dfsg1-stable")
+    (date "wo 31 jan 2018 19:23:49 CET")
+    (tool "Eeschema 4.0.2+dfsg1-stable")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
         (title)
@@ -18,12 +18,12 @@
     (comp (ref U1)
       (value STM32F103C4)
       (footprint Housings_QFP:LQFP-48_7x7mm_Pitch0.5mm)
-      (libsource (lib neotek-cache) (part STM32F103C4))
+      (libsource (lib stm32) (part STM32F103C4))
       (sheetpath (names /) (tstamps /))
       (tstamp 5A6E2C26))
     (comp (ref P1)
       (value USB_OTG)
-      (footprint Connect:USB_Micro-B)
+      (footprint Connect:USB_Micro-B_10103594-0001LF)
       (libsource (lib conn) (part USB_OTG))
       (sheetpath (names /) (tstamps /))
       (tstamp 5A6E2DEF))
@@ -213,7 +213,7 @@
         (pin (num 4) (name BP) (type input))
         (pin (num 5) (name OUT) (type power_out))))
     (libpart (lib conn) (part CONN_01X05)
-      (description "Connector, single row, 01x05")
+      (description "Connector 01x05")
       (footprints
         (fp Pin_Header_Straight_1X05)
         (fp Pin_Header_Angled_1X05)
@@ -229,7 +229,7 @@
         (pin (num 4) (name P4) (type passive))
         (pin (num 5) (name P5) (type passive))))
     (libpart (lib conn) (part CONN_01X19)
-      (description "Connector, single row, 01x19")
+      (description "Connector 01x19")
       (footprints
         (fp Pin_Header_Straight_1X19)
         (fp Pin_Header_Angled_1X19)
@@ -293,9 +293,11 @@
       (pins
         (pin (num 1) (name ~) (type passive))
         (pin (num 2) (name ~) (type passive))))
-    (libpart (lib neotek-cache) (part STM32F103C4)
+    (libpart (lib stm32) (part STM32F103C4)
       (aliases
         (alias STM32F103C6))
+      (description "32-bit ARM Cortex-M3 Microcontroller, 72MHz, 16KB Flash, 6KB RAM, USB, CAN, LQFP48")
+      (docs http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/CD00210843.pdf)
       (fields
         (field (name Reference) U)
         (field (name Value) STM32F103C4)
@@ -350,7 +352,7 @@
         (pin (num 47) (name VSS) (type power_in))
         (pin (num 48) (name VDD) (type power_in))))
     (libpart (lib conn) (part USB_OTG)
-      (description "USB micro/mini connector")
+      (description "micro/mini connector")
       (footprints
         (fp USB*))
       (fields
@@ -364,14 +366,14 @@
         (pin (num 5) (name GND) (type power_in))
         (pin (num 6) (name shield) (type passive)))))
   (libraries
-    (library (logical neotek-cache)
-      (uri /home/wouter/personal/neotek/neotek-cache.lib))
+    (library (logical device)
+      (uri /usr/share/kicad/library/device.lib))
     (library (logical conn)
       (uri /usr/share/kicad/library/conn.lib))
+    (library (logical stm32)
+      (uri /usr/share/kicad/library/stm32.lib))
     (library (logical Regulator_Linear)
-      (uri /home/wouter/personal/neotek/Regulator_Linear.lib))
-    (library (logical device)
-      (uri /usr/share/kicad/library/device.lib)))
+      (uri /home/wouter/personal/neotek/Regulator_Linear.lib)))
   (nets
     (net (code 1) (name /PB13)
       (node (ref P4) (pin 18))
